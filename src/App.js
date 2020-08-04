@@ -30,7 +30,7 @@ function App() {
         <AddMemeForm />
       </div>
       <div className="App-main">
-        <ul className="App-meme-container">
+        <ul className="App-meme-container" id="newMemes">
         {memeList}
         </ul>
       </div>

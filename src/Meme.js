@@ -1,4 +1,5 @@
 import React from "react";
+import './Meme.css';
 
 function Meme({id, img_url, textTop, textBottom, deleteMeme}) {
 
@@ -8,10 +9,10 @@ function Meme({id, img_url, textTop, textBottom, deleteMeme}) {
 
     return (
         <li className="Meme">
-        <div>
+        <div className="Meme-container">
             <img src={img_url} />
-            <p>{textTop}</p>
-            <p>{textBottom}</p>
+            <p className="text-top">{textTop}</p>
+            <p className="text-bottom">{textBottom}</p>
             <button onClick={handleClick}>Remove</button>
         </div>
         </li>
