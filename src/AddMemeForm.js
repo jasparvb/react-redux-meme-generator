@@ -3,10 +3,10 @@ import { useDispatch } from "react-redux";
 import uuidv4 from "uuid/v4";
 
 const INITIAL_FORM = {
+    img_url: '',
     textTop: '',
-    textBottom: '',
-    url: ''
-}
+    textBottom: ''
+};
 
 /* Render two inputs to change numbers in the redux store. */
 function AddMemeForm() {
@@ -15,27 +15,27 @@ function AddMemeForm() {
 
     const handleChange = evt => {
         const { name, value } = evt.target;
-        setInputs(inputs => ({ ...inputs, [name]: +value }));
+        setInputs(inputs => ({ ...inputs, [name]: value }));
     };
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch({type: "ADD_MEME", ...inputs, id: uuidv4() });
+        dispatch({type: "ADD_MEME", meme: {...inputs, id: uuidv4()} });
         setInputs(INITIAL_FORM);
     }
 
     return (
         <div>
         <form onSubmit={handleSubmit}>
-            <label for="img">Image URL:</label>
+            <label htmlFor="img_url">Image URL:</label>
             <input
                 type="text"
-                value={inputs.img}
-                name="img"
-                id="img"
+                value={inputs.img_url}
+                name="img_url"
+                id="img_url"
                 onChange={handleChange}
             />
-            <label for="textTop">Top text:</label>
+            <label htmlFor="textTop">Top text:</label>
             <input
                 type="text"
                 value={inputs.textTop}
@@ -43,7 +43,7 @@ function AddMemeForm() {
                 id="textTop"
                 onChange={handleChange}
             />
-            <label for="textBottom">Bottom text:</label>
+            <label htmlFor="textBottom">Bottom text:</label>
             <input
                 type="text"
                 value={inputs.textBottom}
